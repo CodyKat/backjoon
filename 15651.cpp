@@ -3,7 +3,6 @@
 int N, M;
 char arr[10];
 
-
 void print(int i)
 {
     if (i == M)
@@ -13,7 +12,7 @@ void print(int i)
             std::cout << arr[j] << " ";
         }
         std::cout << '\n';
-        return ;
+        return;
     }
     for (int j = 0; j < N; j++)
     {
