@@ -1,111 +1,55 @@
 #include <iostream>
 #include <stack>
 
-// char str[50];
-// std::stack<int> stack;
-// int answer;
-// int curr_sum = 1;
-// void error()
-// {
-//     std::cout << '0';
-//     exit(1);
-// }
-
-// int main()
-// {
-//     int tmp;
-//     std::cin >> str;
-//     for (int i = 0; i < strlen(str); i++)
-//     {
-//         if (str[i] == '(')
-//         {
-//             stack.push(2);
-//             curr_sum *= 2;
-//         }
-//         else if (str[i] == ')')
-//         {
-//             tmp = stack.top();
-//             stack.pop();
-//             if (tmp != 2)
-//                 error();
-//             if (stack.size() == 0)
-//             {
-//                 answer += curr_sum;
-//                 curr_sum = 1;
-//             }
-//         }
-//         if (str[i] == '[')
-//         {
-//             stack.push(3);
-//             curr_sum *= 3;
-//         }
-//         else if (str[i] == ']')
-//         {
-//             tmp = stack.top();
-//             stack.pop();
-//             if (tmp != 3)
-//                 error();
-//             if (stack.size() == 0)
-//             {
-//                 answer += curr_sum;
-//                 curr_sum = 1;
-//             }
-//         }
-//     }
-//     std::cout << answer;
-//     return 0;
-// }
-
+std::stack<char> stack;
 char str[50];
-int small_sum(char *str);
 int answer;
-int i;
+int len;
 
-int big_sum(char *str)
+void error()
 {
-    i++;
-    if (str[0] == '(')
-        return 3 * small_sum(str + 1);
-    else if (str[0] == '[')
-        return 3 * big_sum(str + 1);
-    else
-    {
-        if (str[-1] != ')' && str[-1] != ']')
-            i++;
-        return 1;
-    }
+    std::cout << "0";
+    exit(1);
 }
 
-int small_sum(char *str)
+bool is_valid()
 {
-    i++;
-    if (str[0] == '(')
-        return 2 * small_sum(str + 1);
-    else if (str[0] == '[')
-        return 2 * big_sum(str + 1);
-    else
+    char tmp;
+    for (int i = 0; i < len; i++)
     {
-        if (str[-1] != ')' && str[-1] != ']')
-            return 1;
+        if (str[i] == '(')
+            stack.push('(');
+        else if (str[i] == '[')
+            stack.push(3);
+        else if (str[i] == ')')
+        {
+            tmp = stack.top();
+            stack.pop();
+            if (tmp !=)
+                return false;
+        }
+        else if (str[i] == ']')
+        {
+            tmp = stack.top();
+            stack.pop();
+            if (tmp != 3)
+                return false;
+        }
+        else
+            return false;
     }
+    if (stack.size() != 0)
+        return false;
+    return true;
 }
 
 int main()
 {
     std::cin >> str;
-    int str_len = strlen(str);
-    while (i < str_len)
-    {
-        if (str[i] == '(')
-        {
-            answer += 2 * small_sum(str + i + 1);
-        }
-        else
-        {
-            answer += 3 * big_sum(str + 1 + i);
-        }
-        i++;
-    }
-    std::cout << answer;
-    return 0;
+    len = strlen(str);
+    if (is_valid() == false)
+        error();
+
+    // valid stack;
+    // ( () [[]] )   +  ([])
 }
