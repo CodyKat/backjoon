@@ -68,6 +68,7 @@
         "concepts": "cpp",
         "variant": "cpp",
         "deque": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "map": "cpp"
     }
 }
