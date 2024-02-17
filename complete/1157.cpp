@@ -1,41 +1,51 @@
 #include <iostream>
-#include <string>
+#include <vector>
+using namespace std;
 
-std::string str;
-char answer;
+
 int main()
 {
-    std::cin >> str;
-    int mul['Z' - 'A' + 1];
-    for (int i = 0; i < 'Z' - 'A' + 1; i++)
-        mul[i] = 0;
-    for (int i = 0; i < str.length(); i++)
+
+    int arr['z'- 'a' + 1];
+    for (int i = 0; i < 'z' - 'a' + 1; i++)
+        arr[i] = 0;
+
+
+    string str;
+
+    cin >> str;
+
+    int size = str.length();
+    for (int i = 0; i < size; i++)
     {
-        if ('a' <= str[i] && str[i] <= 'z')
-        {
-            mul[str[i] - 'a']++;
-        }
+        if ('A' <= str[i] && str[i] <= 'Z')
+            arr[str[i] - 'A']++;
         else
-        {
-            mul[str[i] - 'A']++;
-        }
+            arr[str[i] - 'a']++;
     }
+
     int max = -1;
-    for (int i = 0; i < 'Z' - 'A' + 1; i++)
+    vector<int> maxIndex;
+    maxIndex.push_back(-1);
+    for (int i = 0; i < 'z' - 'a' + 1; i++)
     {
-        if (mul[i] == 0)
-            continue;
-        if (mul[i] == max)
+        if (max < arr[i])
         {
-            answer = '?';
-            break;
+            max = arr[i];
+            maxIndex.clear();
+            maxIndex.push_back(i);
         }
-        else if (mul[i] > max)
+        else if (max == arr[i])
         {
-            max = mul[i];
-            answer = i + 'A';
+            maxIndex.push_back(i);
         }
     }
-    std::cout << answer << "\n";
+    
+    
+    if (maxIndex.size() > 1)
+        cout << '?' << '\n';
+    else
+        cout << (char)('A' + maxIndex[0]) << '\n';
+
     return 0;
 }
