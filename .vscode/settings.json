@@ -71,6 +71,10 @@
         "stack": "cpp",
         "map": "cpp",
         "list": "cpp",
-        "queue": "cpp"
-    }
+        "queue": "cpp",
+        "__config_site": "cpp"
+    },
+    "editor.formatOnSave": true,
+    "clang-format.executable": "/usr/local/bin/clang-format",
+    "C_Cpp.clang_format_fallbackStyle": "Mozilla",
 }

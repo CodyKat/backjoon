@@ -26,7 +26,10 @@
             "group": "test",
             "presentation": {
                 "clear": true
-            }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
         },
     ],
     "version": "2.0.0"
