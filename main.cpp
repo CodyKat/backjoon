@@ -31,12 +31,12 @@ int main() {
   int tmp_target, tmp2_target;
   if (s.size() == 1 && (*s.begin()) == 0) {
     answer_1 = 2147483647;
+    answer_2 = 2147483647;
     goto A;
   }
 
   tmp_target = target;
   str = to_string(target);
-  flag = false;
   for (int i = 0; i < str.length(); i++) {
     it = find(s.begin(), s.end(), str[i] - '0');
     if (it == s.end()) {
@@ -50,7 +50,6 @@ int main() {
   }
   answer_1 = abs(target - tmp_target) + str.length();
 
-A:
   tmp2_target = target;
   str = to_string(target);
   for (int i = 0; i < str.length(); i++) {
@@ -65,6 +64,7 @@ A:
     }
   }
   answer_2 = abs(target - tmp2_target) + str.length();
+A:
   int answer;
   if (answer_1 < answer_2)
     answer = answer_1;
